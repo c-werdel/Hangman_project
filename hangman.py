@@ -1,17 +1,19 @@
 from urllib.request import urlopen
+import random
+import urllib.request
 
-def read_word():
-    link = "http://norvig.com/ngrams/sowpods.txt"
-    f = urlopen(link)
-    myfile = f.read()
-    print(myfile)
-    
-# def get_word():
-#     pass
+def read_words():
+    with urllib.request.urlopen("http://norvig.com/ngrams/sowpods.txt") as response:
+        myfile = response.read().decode('utf-8')
+    return(myfile)
 
-# def guess_letter():
-#     pass
+def get_word(myfile):
+    word_list = myfile.split() 
+    word_choice = random.choice(word_list) 
+    return(word_choice)
 
 if __name__ == "__main__":
- read_file = read_word()
- print(read_file)
+    myfile = read_words()
+    choice_word = get_word(myfile)
+    print(choice_word)
+    
