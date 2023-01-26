@@ -21,7 +21,8 @@ def letter_checker(word_choice):
     print("Your word is", user_line)
     
     while True:
-        guess = input("Guess a letter ").upper() 
+        print("Wrong guessed letters: " , wrong_guesses) 
+        guess = input("Guess a letter ").upper()
         index_count = 0
         for letter in word_choice:
             if letter == guess:
@@ -33,11 +34,10 @@ def letter_checker(word_choice):
         if guess not in word_choice:
             print("Sorry that letter is not in the word")
             wrong_guesses.append(guess)
-            print("Guessed letters: " , wrong_guesses)
 
 if __name__ == "__main__":
     myfile = read_words()
     choice_word = get_word(myfile)
-    play = letter_checker(choice_word)
+    letter_checker(choice_word)
 
     
