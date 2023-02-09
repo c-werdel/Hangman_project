@@ -17,11 +17,9 @@ def letter_checker(word_choice):
     fail_limit = 12
     print("Guess That Word")
     word_completion = "_" *len(word_choice) 
-    # word_choice = list(word_choice) 
     user_line = list(word_completion)
     guessed = []
-    print(word_choice)
-        
+   
     while True:
         print("Your word is", user_line)
         print("Letters guessed wrong: " , guessed,) 
@@ -29,9 +27,8 @@ def letter_checker(word_choice):
         guess = input("Guess a letter ").upper()
         
         if guess in guessed or guess in user_line:
-            print("you already guessed", guess)
+            print("You already guessed", guess)
             continue
-        #
 
         index_count = 0
         correct_printout = False
@@ -45,16 +42,14 @@ def letter_checker(word_choice):
             if fail_count > 0:
                 fail_count -= 1 
 
-       
-        if guess not in word_choice: #only wrong guesses will contrbute to the fail count
+        if guess not in word_choice:
             print("Sorry", guess,  "is not in the word")
             guessed.append(guess)
             fail_count += 1
     
-        if "".join(user_line) == word_choice: #if user line matches word_choice
+        if "".join(user_line) == word_choice:
             print("correct you guessed", user_line, "and the word was", word_choice,)
             break
-        #put a list back into a string
         
         if fail_count >= fail_limit:
             print("Sorry you lost the word was" , word_choice)
